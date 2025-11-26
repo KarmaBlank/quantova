@@ -12,7 +12,14 @@
     "loading": "Loading...",
     "error": "Error",
     "success": "Success",
-    "noData": "No data available"
+    "noData": "No data available",
+    "none": "None",
+    "uncategorized": "Uncategorized",
+    "noDescription": "No description",
+    "noExpenseData": "No expense data",
+    "expensesByCategory": "Expenses by Category",
+    "monthlyTrend": "Monthly Trend",
+    "expenseDistribution": "Expense Distribution"
   },
   "dashboard": {
     "title": "Finance",
@@ -23,7 +30,17 @@
     "seeAll": "See all",
     "youAreOnTop": "You are on Top",
     "ofYourFinances": "of your Finances",
-    "noTransactions": "No transactions yet"
+    "noTransactions": "No transactions yet",
+    "globalSavings": "Global Savings",
+    "monthlySavings": "Monthly Savings",
+    "addIncome": "Add Income",
+    "addExpense": "Add Expense",
+    "dailyTrend": "Daily Trend",
+    "chartsAndAnalytics": "Charts & Analytics",
+    "reportSaved": "Report saved to",
+    "exportToPdf": "Export to PDF",
+    "exportToExcel": "Export to Excel",
+    "noDataForPeriod": "No data for this period"
   },
   "transactions": {
     "income": "Income",

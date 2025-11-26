@@ -6,6 +6,7 @@ import 'package:intl/intl.dart';
 import '../../../../core/database/entities/transaction.dart';
 import '../../../../core/utils/date_filter_helper.dart';
 import '../../../../core/utils/report_generator.dart';
+import '../../../../i18n/strings.g.dart';
 import '../../../dashboard/presentation/bloc/transaction_bloc.dart';
 
 class ChartsPage extends StatefulWidget {
@@ -25,7 +26,7 @@ class _ChartsPageState extends State<ChartsPage> {
     return Scaffold(
       backgroundColor: isDark ? const Color(0xFF121212) : const Color(0xFFFAFAFA),
       appBar: AppBar(
-        title: const Text('Charts & Analytics'),
+        title: Text(t.dashboard.chartsAndAnalytics),
         backgroundColor: Colors.transparent,
         elevation: 0,
         actions: [
@@ -71,15 +72,15 @@ class _ChartsPageState extends State<ChartsPage> {
                 }
                 if (context.mounted) {
                   ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text('Report saved to $path')),
+                    SnackBar(content: Text('${t.dashboard.reportSaved} $path')),
                   );
                 }
               }
             },
             itemBuilder: (BuildContext context) {
               return [
-                const PopupMenuItem(value: 'pdf', child: Text('Export to PDF')),
-                const PopupMenuItem(value: 'excel', child: Text('Export to Excel')),
+                PopupMenuItem(value: 'pdf', child: Text(t.dashboard.exportToPdf)),
+                PopupMenuItem(value: 'excel', child: Text(t.dashboard.exportToExcel)),
               ];
             },
           ),
@@ -103,7 +104,7 @@ class _ChartsPageState extends State<ChartsPage> {
                     Icon(Icons.bar_chart, size: 64, color: Colors.grey[400]),
                     const SizedBox(height: 16),
                     Text(
-                      'No data for ${_selectedFilter.label}',
+                      '${t.dashboard.noDataForPeriod}: ${_selectedFilter.label}',
                       style: TextStyle(color: Colors.grey[600], fontSize: 16),
                     ),
                   ],
@@ -136,7 +137,7 @@ class _ChartsPageState extends State<ChartsPage> {
 
     final Map<String, double> categoryTotals = {};
     for (var expense in expenses) {
-      final category = expense.category ?? 'Uncategorized';
+      final category = expense.category ?? t.common.uncategorized;
       categoryTotals[category] = (categoryTotals[category] ?? 0) + expense.amount;
     }
 
@@ -149,15 +150,15 @@ class _ChartsPageState extends State<ChartsPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              'Expenses by Category',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            Text(
+              t.common.expensesByCategory,
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 20),
             SizedBox(
               height: 250,
               child: topCategories.isEmpty
-                  ? const Center(child: Text('No expense data'))
+                  ? Center(child: Text(t.common.noExpenseData))
                   : BarChart(
                       BarChartData(
                         alignment: BarChartAlignment.spaceAround,

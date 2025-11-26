@@ -86,14 +86,14 @@ class _TransactionsPageState extends State<TransactionsPage> {
     return Scaffold(
       backgroundColor: isDark ? const Color(0xFF121212) : const Color(0xFFFAFAFA),
       appBar: AppBar(
-        title: const Text('All Transactions'),
+        title: Text(t.dashboard.recentTransactions),
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
       body: BlocBuilder<TransactionBloc, TransactionState>(
         builder: (context, state) {
           if (state is TransactionLoading) {
-            return const Center(child: CircularProgressIndicator());
+            return Center(child: CircularProgressIndicator());
           } else if (state is TransactionLoaded) {
             final filteredTransactions = _applyFilters(state.transactions);
 
@@ -116,7 +116,7 @@ class _TransactionsPageState extends State<TransactionsPage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Filters',
+                        t.filters.filterTransactions,
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
@@ -131,7 +131,7 @@ class _TransactionsPageState extends State<TransactionsPage> {
                             child: DropdownButtonFormField<TransactionType?>(
                               value: _filterType,
                               decoration: InputDecoration(
-                                labelText: 'Type',
+                                labelText: t.filters.byType,
                                 border: const OutlineInputBorder(),
                                 contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                                 fillColor: isDark ? const Color(0xFF2C2C2C) : Colors.white,
@@ -139,7 +139,7 @@ class _TransactionsPageState extends State<TransactionsPage> {
                               ),
                               dropdownColor: isDark ? const Color(0xFF2C2C2C) : null,
                               items: [
-                                const DropdownMenuItem(value: null, child: Text('All')),
+                                DropdownMenuItem(value: null, child: Text(t.common.all)),
                                 DropdownMenuItem(
                                   value: TransactionType.income,
                                   child: Text(t.transactions.income),
@@ -158,7 +158,7 @@ class _TransactionsPageState extends State<TransactionsPage> {
                             child: DropdownButtonFormField<int?>(
                               value: _filterCategoryId,
                               decoration: InputDecoration(
-                                labelText: 'Category',
+                                labelText: t.transactions.category,
                                 border: const OutlineInputBorder(),
                                 contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                                 fillColor: isDark ? const Color(0xFF2C2C2C) : Colors.white,
@@ -166,7 +166,7 @@ class _TransactionsPageState extends State<TransactionsPage> {
                               ),
                               dropdownColor: isDark ? const Color(0xFF2C2C2C) : null,
                               items: [
-                                const DropdownMenuItem(value: null, child: Text('All')),
+                                DropdownMenuItem(value: null, child: Text(t.common.all)),
                                 ..._categories.map((cat) => DropdownMenuItem(
                                       value: cat.id,
                                       child: Text(cat.name ?? 'Unnamed'),
@@ -187,7 +187,7 @@ class _TransactionsPageState extends State<TransactionsPage> {
                               icon: const Icon(Icons.date_range),
                               label: Text(
                                 _dateRange == null
-                                    ? 'Select Date Range'
+                                    ? t.filters.byDateRange
                                     : '${DateFormat.MMMd().format(_dateRange!.start)} - ${DateFormat.MMMd().format(_dateRange!.end)}',
                               ),
                             ),
@@ -196,7 +196,7 @@ class _TransactionsPageState extends State<TransactionsPage> {
                           OutlinedButton.icon(
                             onPressed: _clearFilters,
                             icon: const Icon(Icons.clear),
-                            label: const Text('Clear'),
+                            label: Text(t.filters.clear),
                           ),
                         ],
                       ),
@@ -208,7 +208,7 @@ class _TransactionsPageState extends State<TransactionsPage> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                   child: Text(
-                    '${filteredTransactions.length} transactions',
+                    '${filteredTransactions.length} ${t.dashboard.recentTransactions.toLowerCase()}',
                     style: TextStyle(
                       color: isDark ? Colors.white54 : Colors.grey[600],
                       fontWeight: FontWeight.w500,
@@ -225,7 +225,7 @@ class _TransactionsPageState extends State<TransactionsPage> {
                               Icon(Icons.receipt_long, size: 64, color: isDark ? Colors.white24 : Colors.grey[300]),
                               const SizedBox(height: 16),
                               Text(
-                                'No transactions found',
+                                t.dashboard.noTransactions,
                                 style: TextStyle(color: isDark ? Colors.white54 : Colors.grey[600], fontSize: 16),
                               ),
                             ],
@@ -248,27 +248,8 @@ class _TransactionsPageState extends State<TransactionsPage> {
                               final transaction = filteredTransactions[index];
                               return TransactionCard(
                                 transaction: transaction,
-                                onLongPress: () {
-                                  showDialog(
-                                    context: context,
-                                    builder: (ctx) => AlertDialog(
-                                      title: const Text('Delete Transaction'),
-                                      content: const Text('Are you sure you want to delete this transaction?'),
-                                      actions: [
-                                        TextButton(
-                                          onPressed: () => Navigator.pop(ctx),
-                                          child: const Text('Cancel'),
-                                        ),
-                                        TextButton(
-                                          onPressed: () {
-                                            context.read<TransactionBloc>().add(DeleteTransaction(transaction.id));
-                                            Navigator.pop(ctx);
-                                          },
-                                          child: const Text('Delete', style: TextStyle(color: Colors.red)),
-                                        ),
-                                      ],
-                                    ),
-                                  );
+                                onDelete: () {
+                                  context.read<TransactionBloc>().add(DeleteTransaction(transaction.id));
                                 },
                               );
                             },
@@ -278,7 +259,7 @@ class _TransactionsPageState extends State<TransactionsPage> {
               ],
             );
           }
-          return const Center(child: Text('Error loading transactions'));
+          return Center(child: Text(t.common.error));
         },
       ),
     );

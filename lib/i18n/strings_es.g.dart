@@ -67,6 +67,13 @@ class _TranslationsCommonEs implements TranslationsCommonEn {
 	@override String get error => 'Error';
 	@override String get success => 'Éxito';
 	@override String get noData => 'No hay datos disponibles';
+	@override String get none => 'Ninguna';
+	@override String get uncategorized => 'Sin categoría';
+	@override String get noDescription => 'Sin descripción';
+	@override String get noExpenseData => 'No hay datos de gastos';
+	@override String get expensesByCategory => 'Gastos por Categoría';
+	@override String get monthlyTrend => 'Tendencia Mensual';
+	@override String get expenseDistribution => 'Distribución de Gastos';
 }
 
 // Path: dashboard
@@ -85,6 +92,16 @@ class _TranslationsDashboardEs implements TranslationsDashboardEn {
 	@override String get youAreOnTop => 'Estás al Día';
 	@override String get ofYourFinances => 'con tus Finanzas';
 	@override String get noTransactions => 'No hay transacciones aún';
+	@override String get globalSavings => 'Ahorro Global';
+	@override String get monthlySavings => 'Ahorro Mensual';
+	@override String get addIncome => 'Agregar';
+	@override String get addExpense => 'Agregar';
+	@override String get dailyTrend => 'Tendencia Diaria';
+	@override String get chartsAndAnalytics => 'Gráficos y Análisis';
+	@override String get reportSaved => 'Reporte guardado en';
+	@override String get exportToPdf => 'Exportar a PDF';
+	@override String get exportToExcel => 'Exportar a Excel';
+	@override String get noDataForPeriod => 'No hay datos para este período';
 }
 
 // Path: transactions
@@ -236,6 +253,13 @@ extension on TranslationsEs {
 			'common.error' => 'Error',
 			'common.success' => 'Éxito',
 			'common.noData' => 'No hay datos disponibles',
+			'common.none' => 'Ninguna',
+			'common.uncategorized' => 'Sin categoría',
+			'common.noDescription' => 'Sin descripción',
+			'common.noExpenseData' => 'No hay datos de gastos',
+			'common.expensesByCategory' => 'Gastos por Categoría',
+			'common.monthlyTrend' => 'Tendencia Mensual',
+			'common.expenseDistribution' => 'Distribución de Gastos',
 			'dashboard.title' => 'Finanzas',
 			'dashboard.totalBalance' => 'Balance Total',
 			'dashboard.income' => 'Ingresos',
@@ -245,6 +269,16 @@ extension on TranslationsEs {
 			'dashboard.youAreOnTop' => 'Estás al Día',
 			'dashboard.ofYourFinances' => 'con tus Finanzas',
 			'dashboard.noTransactions' => 'No hay transacciones aún',
+			'dashboard.globalSavings' => 'Ahorro Global',
+			'dashboard.monthlySavings' => 'Ahorro Mensual',
+			'dashboard.addIncome' => 'Agregar',
+			'dashboard.addExpense' => 'Agregar',
+			'dashboard.dailyTrend' => 'Tendencia Diaria',
+			'dashboard.chartsAndAnalytics' => 'Gráficos y Análisis',
+			'dashboard.reportSaved' => 'Reporte guardado en',
+			'dashboard.exportToPdf' => 'Exportar a PDF',
+			'dashboard.exportToExcel' => 'Exportar a Excel',
+			'dashboard.noDataForPeriod' => 'No hay datos para este período',
 			'transactions.income' => 'Ingreso',
 			'transactions.expense' => 'Gasto',
 			'transactions.amount' => 'Monto',

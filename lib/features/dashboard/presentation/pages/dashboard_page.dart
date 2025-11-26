@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gastos_mensuales/i18n/strings.g.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
@@ -54,7 +55,18 @@ class _DashboardPageState extends State<DashboardPage> {
                   Switch(
                     value: themeProvider.isDarkMode,
                     onChanged: (_) => themeProvider.toggleTheme(),
-                    activeColor: const Color(0xFF2196F3),
+                    thumbColor: WidgetStateProperty.resolveWith((states) {
+                      if (states.contains(WidgetState.selected)) {
+                        return const Color(0xFF2196F3);
+                      }
+                      return Colors.grey[400];
+                    }),
+                    trackColor: WidgetStateProperty.resolveWith((states) {
+                      if (states.contains(WidgetState.selected)) {
+                        return const Color(0xFF2196F3).withOpacity(0.5);
+                      }
+                      return Colors.grey[600];
+                    }),
                   ),
                   Icon(
                     Icons.nightlight_round,
@@ -211,6 +223,7 @@ class _DashboardPageState extends State<DashboardPage> {
   }
 
   Widget _buildHeaderCard(BuildContext context, TransactionLoaded state, double monthIncome, double monthExpenses) {
+    final t = Translations.of(context);
     // Calculate savings for the selected period
     final monthSavings = monthIncome - monthExpenses;
     final periodSavingsPercentage = monthIncome > 0 ? ((monthSavings / monthIncome) * 100) : 0.0;
@@ -236,9 +249,9 @@ class _DashboardPageState extends State<DashboardPage> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            'Total Balance',
-            style: TextStyle(
+          Text(
+            t.dashboard.totalBalance,
+            style: const TextStyle(
               color: Colors.white,
               fontSize: 20,
               fontWeight: FontWeight.bold,
@@ -259,7 +272,7 @@ class _DashboardPageState extends State<DashboardPage> {
               Expanded(
                 child: _buildSavingsIndicator(
                   context,
-                  'Global Savings',
+                  t.dashboard.globalSavings,
                   globalSavingsPercentage,
                   Icons.public,
                 ),
@@ -268,7 +281,7 @@ class _DashboardPageState extends State<DashboardPage> {
               Expanded(
                 child: _buildSavingsIndicator(
                   context,
-                  'Period Savings',
+                  t.dashboard.monthlySavings,
                   periodSavingsPercentage,
                   Icons.calendar_today,
                 ),
@@ -294,9 +307,12 @@ class _DashboardPageState extends State<DashboardPage> {
             children: [
               Icon(icon, color: Colors.white70, size: 14),
               const SizedBox(width: 6),
-              Text(
-                label,
-                style: const TextStyle(color: Colors.white70, fontSize: 11),
+              Expanded(
+                child: Text(
+                  label,
+                  style: const TextStyle(color: Colors.white70, fontSize: 11),
+                  overflow: TextOverflow.ellipsis,
+                ),
               ),
             ],
           ),
@@ -319,7 +335,7 @@ class _DashboardPageState extends State<DashboardPage> {
       children: [
         Expanded(
           child: _buildSummaryCard(
-            'Income',
+            t.dashboard.income,
             income,
             Icons.arrow_downward,
             const Color(0xFF2196F3),
@@ -329,7 +345,7 @@ class _DashboardPageState extends State<DashboardPage> {
         const SizedBox(width: 16),
         Expanded(
           child: _buildSummaryCard(
-            'Expenses',
+            t.dashboard.expenses,
             expenses,
             Icons.arrow_upward,
             const Color(0xFF78909C),
@@ -341,6 +357,7 @@ class _DashboardPageState extends State<DashboardPage> {
   }
 
   Widget _buildSummaryCard(String label, double amount, IconData icon, Color color, {required VoidCallback onAdd}) {
+    final t = Translations.of(context);
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Container(
@@ -370,16 +387,19 @@ class _DashboardPageState extends State<DashboardPage> {
                 ),
                 child: Icon(icon, color: color, size: 22),
               ),
-              InkWell(
-                onTap: onAdd,
-                borderRadius: BorderRadius.circular(12),
-                child: Container(
-                  padding: const EdgeInsets.all(8),
-                  decoration: BoxDecoration(
-                    color: color,
-                    borderRadius: BorderRadius.circular(12),
+              TextButton(
+                onPressed: onAdd,
+                style: TextButton.styleFrom(
+                  backgroundColor: color.withOpacity(0.1),
+                  foregroundColor: color,
+                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
                   ),
-                  child: const Icon(Icons.add, color: Colors.white, size: 20),
+                ),
+                child: Text(
+                  label == t.dashboard.income ? t.dashboard.addIncome : t.dashboard.addExpense,
+                  style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
                 ),
               ),
             ],
@@ -464,7 +484,7 @@ class _DashboardPageState extends State<DashboardPage> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'Daily Trend',
+                t.dashboard.dailyTrend,
                 style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w600,
@@ -508,8 +528,8 @@ class _DashboardPageState extends State<DashboardPage> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              _buildChartLegend('Income', const Color(0xFF2196F3)),
-              _buildChartLegend('Expenses', const Color(0xFFEF5350)),
+              _buildChartLegend(t.dashboard.income, const Color(0xFF2196F3)),
+              _buildChartLegend(t.dashboard.expenses, const Color(0xFFEF5350)),
             ],
           ),
         ],
@@ -538,6 +558,7 @@ class _DashboardPageState extends State<DashboardPage> {
             color: isDark ? Colors.white70 : Colors.grey[700],
             fontWeight: FontWeight.w500,
           ),
+          overflow: TextOverflow.ellipsis,
         ),
       ],
     );
@@ -570,10 +591,10 @@ class _DashboardPageState extends State<DashboardPage> {
 
   Widget _buildTransactionList(List<ExpenseTransaction> transactions) {
     if (transactions.isEmpty) {
-      return const Center(
+      return Center(
         child: Padding(
-          padding: EdgeInsets.all(32.0),
-          child: Text('No transactions yet'),
+          padding: const EdgeInsets.all(32.0),
+          child: Text(t.dashboard.noTransactions),
         ),
       );
     }

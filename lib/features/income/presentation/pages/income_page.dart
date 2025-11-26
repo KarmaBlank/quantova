@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gastos_mensuales/core/utils/category_helper.dart';
 import 'package:intl/intl.dart';
 
 import '../../../../core/database/database_service.dart';
@@ -111,7 +112,7 @@ class _IncomePageState extends State<IncomePage> {
         amount: amount,
         date: _selectedDate,
         description: description,
-        category: _categories.firstWhere((c) => c.id == _selectedCategoryId, orElse: () => _categories.first).name,
+        category: _selectedCategoryId != null ? _categories.firstWhere((c) => c.id == _selectedCategoryId).name : null,
         categoryId: _selectedCategoryId,
       );
 
@@ -165,17 +166,23 @@ class _IncomePageState extends State<IncomePage> {
               Row(
                 children: [
                   Expanded(
-                    child: DropdownButtonFormField<int>(
+                    child: DropdownButtonFormField<int?>(
                       value: _selectedCategoryId,
                       decoration: InputDecoration(
                         labelText: t.expenses.categoryOptional,
                       ),
-                      items: _categories.map((category) {
-                        return DropdownMenuItem<int>(
-                          value: category.id,
-                          child: Text(category.name),
-                        );
-                      }).toList(),
+                      items: [
+                        DropdownMenuItem<int?>(
+                          value: null,
+                          child: Text(t.common.none),
+                        ),
+                        ..._categories.map((category) {
+                          return DropdownMenuItem<int?>(
+                            value: category.id,
+                            child: Text(CategoryHelper.getLocalizedCategoryName(category.name)),
+                          );
+                        }),
+                      ],
                       onChanged: (value) {
                         setState(() {
                           _selectedCategoryId = value;

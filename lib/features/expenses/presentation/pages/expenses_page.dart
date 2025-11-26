@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gastos_mensuales/core/utils/category_helper.dart';
 import 'package:google_mlkit_text_recognition/google_mlkit_text_recognition.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
@@ -311,7 +312,7 @@ class _ExpensesPageState extends State<ExpensesPage> {
         amount: amount,
         date: _selectedDate,
         description: description,
-        category: _categories.firstWhere((c) => c.id == _selectedCategoryId, orElse: () => _categories.first).name,
+        category: _selectedCategoryId != null ? _categories.firstWhere((c) => c.id == _selectedCategoryId).name : null,
         receiptPath: _receiptPath,
         categoryId: _selectedCategoryId,
       );
@@ -378,17 +379,23 @@ class _ExpensesPageState extends State<ExpensesPage> {
               Row(
                 children: [
                   Expanded(
-                    child: DropdownButtonFormField<int>(
+                    child: DropdownButtonFormField<int?>(
                       value: _selectedCategoryId,
                       decoration: InputDecoration(
                         labelText: t.expenses.categoryOptional,
                       ),
-                      items: _categories.map((category) {
-                        return DropdownMenuItem<int>(
-                          value: category.id,
-                          child: Text(category.name),
-                        );
-                      }).toList(),
+                      items: [
+                        DropdownMenuItem<int?>(
+                          value: null,
+                          child: Text(t.common.none),
+                        ),
+                        ..._categories.map((category) {
+                          return DropdownMenuItem<int?>(
+                            value: category.id,
+                            child: Text(CategoryHelper.getLocalizedCategoryName(category.name)),
+                          );
+                        }),
+                      ],
                       onChanged: (value) {
                         setState(() {
                           _selectedCategoryId = value;

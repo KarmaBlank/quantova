@@ -49,6 +49,24 @@ class TransactionBloc extends Bloc<TransactionEvent, TransactionState> {
   }
 
   Future<void> _onDeleteTransaction(DeleteTransaction event, Emitter<TransactionState> emit) async {
+    final currentState = state;
+    if (currentState is TransactionLoaded) {
+      // Optimistic update: Remove item immediately from state
+      final updatedTransactions = currentState.transactions.where((t) => t.id != event.id).toList();
+
+      double income = 0;
+      double expenses = 0;
+      for (var t in updatedTransactions) {
+        if (t.transactionType == TransactionType.income) {
+          income += t.amount;
+        } else {
+          expenses += t.amount;
+        }
+      }
+
+      emit(TransactionLoaded(updatedTransactions, income, expenses, income - expenses));
+    }
+
     try {
       await _repository.deleteTransaction(event.id);
     } catch (e) {

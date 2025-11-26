@@ -97,6 +97,27 @@ class TranslationsCommonEn {
 
 	/// en: 'No data available'
 	String get noData => 'No data available';
+
+	/// en: 'None'
+	String get none => 'None';
+
+	/// en: 'Uncategorized'
+	String get uncategorized => 'Uncategorized';
+
+	/// en: 'No description'
+	String get noDescription => 'No description';
+
+	/// en: 'No expense data'
+	String get noExpenseData => 'No expense data';
+
+	/// en: 'Expenses by Category'
+	String get expensesByCategory => 'Expenses by Category';
+
+	/// en: 'Monthly Trend'
+	String get monthlyTrend => 'Monthly Trend';
+
+	/// en: 'Expense Distribution'
+	String get expenseDistribution => 'Expense Distribution';
 }
 
 // Path: dashboard
@@ -133,6 +154,36 @@ class TranslationsDashboardEn {
 
 	/// en: 'No transactions yet'
 	String get noTransactions => 'No transactions yet';
+
+	/// en: 'Global Savings'
+	String get globalSavings => 'Global Savings';
+
+	/// en: 'Monthly Savings'
+	String get monthlySavings => 'Monthly Savings';
+
+	/// en: 'Add Income'
+	String get addIncome => 'Add Income';
+
+	/// en: 'Add Expense'
+	String get addExpense => 'Add Expense';
+
+	/// en: 'Daily Trend'
+	String get dailyTrend => 'Daily Trend';
+
+	/// en: 'Charts & Analytics'
+	String get chartsAndAnalytics => 'Charts & Analytics';
+
+	/// en: 'Report saved to'
+	String get reportSaved => 'Report saved to';
+
+	/// en: 'Export to PDF'
+	String get exportToPdf => 'Export to PDF';
+
+	/// en: 'Export to Excel'
+	String get exportToExcel => 'Export to Excel';
+
+	/// en: 'No data for this period'
+	String get noDataForPeriod => 'No data for this period';
 }
 
 // Path: transactions
@@ -413,6 +464,13 @@ extension on Translations {
 			'common.error' => 'Error',
 			'common.success' => 'Success',
 			'common.noData' => 'No data available',
+			'common.none' => 'None',
+			'common.uncategorized' => 'Uncategorized',
+			'common.noDescription' => 'No description',
+			'common.noExpenseData' => 'No expense data',
+			'common.expensesByCategory' => 'Expenses by Category',
+			'common.monthlyTrend' => 'Monthly Trend',
+			'common.expenseDistribution' => 'Expense Distribution',
 			'dashboard.title' => 'Finance',
 			'dashboard.totalBalance' => 'Total Balance',
 			'dashboard.income' => 'Income',
@@ -422,6 +480,16 @@ extension on Translations {
 			'dashboard.youAreOnTop' => 'You are on Top',
 			'dashboard.ofYourFinances' => 'of your Finances',
 			'dashboard.noTransactions' => 'No transactions yet',
+			'dashboard.globalSavings' => 'Global Savings',
+			'dashboard.monthlySavings' => 'Monthly Savings',
+			'dashboard.addIncome' => 'Add Income',
+			'dashboard.addExpense' => 'Add Expense',
+			'dashboard.dailyTrend' => 'Daily Trend',
+			'dashboard.chartsAndAnalytics' => 'Charts & Analytics',
+			'dashboard.reportSaved' => 'Report saved to',
+			'dashboard.exportToPdf' => 'Export to PDF',
+			'dashboard.exportToExcel' => 'Export to Excel',
+			'dashboard.noDataForPeriod' => 'No data for this period',
 			'transactions.income' => 'Income',
 			'transactions.expense' => 'Expense',
 			'transactions.amount' => 'Amount',
