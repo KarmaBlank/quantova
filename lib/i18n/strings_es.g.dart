@@ -1,0 +1,315 @@
+///
+/// Generated file. Do not edit.
+///
+// coverage:ignore-file
+// ignore_for_file: type=lint, unused_import
+// dart format off
+
+import 'package:flutter/widgets.dart';
+import 'package:intl/intl.dart';
+import 'package:slang/generated.dart';
+import 'strings.g.dart';
+
+// Path: <root>
+class TranslationsEs with BaseTranslations<AppLocale, Translations> implements Translations {
+	/// You can call this constructor and build your own translation instance of this locale.
+	/// Constructing via the enum [AppLocale.build] is preferred.
+	TranslationsEs({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver, TranslationMetadata<AppLocale, Translations>? meta})
+		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
+		  $meta = meta ?? TranslationMetadata(
+		    locale: AppLocale.es,
+		    overrides: overrides ?? {},
+		    cardinalResolver: cardinalResolver,
+		    ordinalResolver: ordinalResolver,
+		  ) {
+		$meta.setFlatMapFunction(_flatMapFunction);
+	}
+
+	/// Metadata for the translations of <es>.
+	@override final TranslationMetadata<AppLocale, Translations> $meta;
+
+	/// Access flat map
+	@override dynamic operator[](String key) => $meta.getTranslation(key);
+
+	late final TranslationsEs _root = this; // ignore: unused_field
+
+	@override 
+	TranslationsEs $copyWith({TranslationMetadata<AppLocale, Translations>? meta}) => TranslationsEs(meta: meta ?? this.$meta);
+
+	// Translations
+	@override String get appName => 'Gastos Mensuales';
+	@override late final _TranslationsCommonEs common = _TranslationsCommonEs._(_root);
+	@override late final _TranslationsDashboardEs dashboard = _TranslationsDashboardEs._(_root);
+	@override late final _TranslationsTransactionsEs transactions = _TranslationsTransactionsEs._(_root);
+	@override late final _TranslationsCategoriesEs categories = _TranslationsCategoriesEs._(_root);
+	@override late final _TranslationsReportsEs reports = _TranslationsReportsEs._(_root);
+	@override late final _TranslationsSettingsEs settings = _TranslationsSettingsEs._(_root);
+	@override late final _TranslationsFiltersEs filters = _TranslationsFiltersEs._(_root);
+	@override late final _TranslationsExpensesEs expenses = _TranslationsExpensesEs._(_root);
+}
+
+// Path: common
+class _TranslationsCommonEs implements TranslationsCommonEn {
+	_TranslationsCommonEs._(this._root);
+
+	final TranslationsEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get cancel => 'Cancelar';
+	@override String get save => 'Guardar';
+	@override String get delete => 'Eliminar';
+	@override String get edit => 'Editar';
+	@override String get add => 'Agregar';
+	@override String get search => 'Buscar';
+	@override String get filter => 'Filtrar';
+	@override String get all => 'Todos';
+	@override String get loading => 'Cargando...';
+	@override String get error => 'Error';
+	@override String get success => 'Éxito';
+	@override String get noData => 'No hay datos disponibles';
+}
+
+// Path: dashboard
+class _TranslationsDashboardEs implements TranslationsDashboardEn {
+	_TranslationsDashboardEs._(this._root);
+
+	final TranslationsEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Finanzas';
+	@override String get totalBalance => 'Balance Total';
+	@override String get income => 'Ingresos';
+	@override String get expenses => 'Gastos';
+	@override String get recentTransactions => 'Transacciones Recientes';
+	@override String get seeAll => 'Ver todo';
+	@override String get youAreOnTop => 'Estás al Día';
+	@override String get ofYourFinances => 'con tus Finanzas';
+	@override String get noTransactions => 'No hay transacciones aún';
+}
+
+// Path: transactions
+class _TranslationsTransactionsEs implements TranslationsTransactionsEn {
+	_TranslationsTransactionsEs._(this._root);
+
+	final TranslationsEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get income => 'Ingreso';
+	@override String get expense => 'Gasto';
+	@override String get amount => 'Monto';
+	@override String get description => 'Descripción';
+	@override String get category => 'Categoría';
+	@override String get date => 'Fecha';
+	@override String get receipt => 'Recibo';
+	@override String get addIncome => 'Agregar Ingreso';
+	@override String get addExpense => 'Agregar Gasto';
+	@override String get editTransaction => 'Editar Transacción';
+	@override String get deleteTransaction => 'Eliminar Transacción';
+	@override String get scanReceipt => 'Escanear Recibo';
+	@override String get takePhoto => 'Tomar Foto';
+	@override String get chooseFromGallery => 'Elegir de Galería';
+	@override String get saveIncome => 'Guardar Ingreso';
+}
+
+// Path: categories
+class _TranslationsCategoriesEs implements TranslationsCategoriesEn {
+	_TranslationsCategoriesEs._(this._root);
+
+	final TranslationsEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Categorías';
+	@override String get addCategory => 'Agregar Categoría';
+	@override String get editCategory => 'Editar Categoría';
+	@override String get deleteCategory => 'Eliminar Categoría';
+	@override String get selectCategory => 'Seleccionar Categoría';
+	@override String get customCategories => 'Categorías Personalizadas';
+	@override late final _TranslationsCategoriesDefaultCategoriesEs defaultCategories = _TranslationsCategoriesDefaultCategoriesEs._(_root);
+}
+
+// Path: reports
+class _TranslationsReportsEs implements TranslationsReportsEn {
+	_TranslationsReportsEs._(this._root);
+
+	final TranslationsEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Reportes';
+	@override String get byCategory => 'Por Categoría';
+	@override String get byDate => 'Por Fecha';
+	@override String get exportPDF => 'Exportar PDF';
+	@override String get exportExcel => 'Exportar Excel';
+	@override String get totalSpent => 'Total Gastado';
+	@override String get averagePerDay => 'Promedio por Día';
+	@override String get topCategories => 'Principales Categorías';
+}
+
+// Path: settings
+class _TranslationsSettingsEs implements TranslationsSettingsEn {
+	_TranslationsSettingsEs._(this._root);
+
+	final TranslationsEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Configuración';
+	@override String get language => 'Idioma';
+	@override String get theme => 'Tema';
+	@override String get currency => 'Moneda';
+	@override String get notifications => 'Notificaciones';
+}
+
+// Path: filters
+class _TranslationsFiltersEs implements TranslationsFiltersEn {
+	_TranslationsFiltersEs._(this._root);
+
+	final TranslationsEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get filterTransactions => 'Filtrar Transacciones';
+	@override String get byType => 'Por Tipo';
+	@override String get byCategory => 'Por Categoría';
+	@override String get byDateRange => 'Por Rango de Fechas';
+	@override String get apply => 'Aplicar';
+	@override String get clear => 'Limpiar';
+}
+
+// Path: expenses
+class _TranslationsExpensesEs implements TranslationsExpensesEn {
+	_TranslationsExpensesEs._(this._root);
+
+	final TranslationsEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get addExpense => 'Agregar Gasto';
+	@override String get selectImageSource => 'Seleccionar Fuente de Imagen';
+	@override String get camera => 'Cámara';
+	@override String get gallery => 'Galería';
+	@override String get detected => 'Detectado';
+	@override String get detectedAmount => 'Monto detectado';
+	@override String get detectedMerchant => 'Comercio detectado';
+	@override String get noInfoDetected => 'No se pudo detectar información. Por favor ingrese manualmente.';
+	@override String get scanError => 'Error al escanear recibo';
+	@override String get receiptScanned => 'Recibo escaneado';
+	@override String get amount => 'Monto';
+	@override String get enterAmount => 'Por favor ingrese un monto';
+	@override String get validNumber => 'Por favor ingrese un número válido';
+	@override String get description => 'Descripción';
+	@override String get categoryOptional => 'Categoría (Opcional)';
+	@override String get date => 'Fecha';
+	@override String get saveExpense => 'Guardar Gasto';
+	@override String get scanReceipt => 'Escanear Recibo';
+}
+
+// Path: categories.defaultCategories
+class _TranslationsCategoriesDefaultCategoriesEs implements TranslationsCategoriesDefaultCategoriesEn {
+	_TranslationsCategoriesDefaultCategoriesEs._(this._root);
+
+	final TranslationsEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get home => 'Casa';
+	@override String get subscriptions => 'Suscripciones';
+	@override String get groceries => 'Super';
+	@override String get fastFood => 'Comida Rápida';
+	@override String get restaurant => 'Restaurante';
+	@override String get entertainment => 'Entretenimiento';
+}
+
+/// The flat map containing all translations for locale <es>.
+/// Only for edge cases! For simple maps, use the map function of this library.
+///
+/// The Dart AOT compiler has issues with very large switch statements,
+/// so the map is split into smaller functions (512 entries each).
+extension on TranslationsEs {
+	dynamic _flatMapFunction(String path) {
+		return switch (path) {
+			'appName' => 'Gastos Mensuales',
+			'common.cancel' => 'Cancelar',
+			'common.save' => 'Guardar',
+			'common.delete' => 'Eliminar',
+			'common.edit' => 'Editar',
+			'common.add' => 'Agregar',
+			'common.search' => 'Buscar',
+			'common.filter' => 'Filtrar',
+			'common.all' => 'Todos',
+			'common.loading' => 'Cargando...',
+			'common.error' => 'Error',
+			'common.success' => 'Éxito',
+			'common.noData' => 'No hay datos disponibles',
+			'dashboard.title' => 'Finanzas',
+			'dashboard.totalBalance' => 'Balance Total',
+			'dashboard.income' => 'Ingresos',
+			'dashboard.expenses' => 'Gastos',
+			'dashboard.recentTransactions' => 'Transacciones Recientes',
+			'dashboard.seeAll' => 'Ver todo',
+			'dashboard.youAreOnTop' => 'Estás al Día',
+			'dashboard.ofYourFinances' => 'con tus Finanzas',
+			'dashboard.noTransactions' => 'No hay transacciones aún',
+			'transactions.income' => 'Ingreso',
+			'transactions.expense' => 'Gasto',
+			'transactions.amount' => 'Monto',
+			'transactions.description' => 'Descripción',
+			'transactions.category' => 'Categoría',
+			'transactions.date' => 'Fecha',
+			'transactions.receipt' => 'Recibo',
+			'transactions.addIncome' => 'Agregar Ingreso',
+			'transactions.addExpense' => 'Agregar Gasto',
+			'transactions.editTransaction' => 'Editar Transacción',
+			'transactions.deleteTransaction' => 'Eliminar Transacción',
+			'transactions.scanReceipt' => 'Escanear Recibo',
+			'transactions.takePhoto' => 'Tomar Foto',
+			'transactions.chooseFromGallery' => 'Elegir de Galería',
+			'transactions.saveIncome' => 'Guardar Ingreso',
+			'categories.title' => 'Categorías',
+			'categories.addCategory' => 'Agregar Categoría',
+			'categories.editCategory' => 'Editar Categoría',
+			'categories.deleteCategory' => 'Eliminar Categoría',
+			'categories.selectCategory' => 'Seleccionar Categoría',
+			'categories.customCategories' => 'Categorías Personalizadas',
+			'categories.defaultCategories.home' => 'Casa',
+			'categories.defaultCategories.subscriptions' => 'Suscripciones',
+			'categories.defaultCategories.groceries' => 'Super',
+			'categories.defaultCategories.fastFood' => 'Comida Rápida',
+			'categories.defaultCategories.restaurant' => 'Restaurante',
+			'categories.defaultCategories.entertainment' => 'Entretenimiento',
+			'reports.title' => 'Reportes',
+			'reports.byCategory' => 'Por Categoría',
+			'reports.byDate' => 'Por Fecha',
+			'reports.exportPDF' => 'Exportar PDF',
+			'reports.exportExcel' => 'Exportar Excel',
+			'reports.totalSpent' => 'Total Gastado',
+			'reports.averagePerDay' => 'Promedio por Día',
+			'reports.topCategories' => 'Principales Categorías',
+			'settings.title' => 'Configuración',
+			'settings.language' => 'Idioma',
+			'settings.theme' => 'Tema',
+			'settings.currency' => 'Moneda',
+			'settings.notifications' => 'Notificaciones',
+			'filters.filterTransactions' => 'Filtrar Transacciones',
+			'filters.byType' => 'Por Tipo',
+			'filters.byCategory' => 'Por Categoría',
+			'filters.byDateRange' => 'Por Rango de Fechas',
+			'filters.apply' => 'Aplicar',
+			'filters.clear' => 'Limpiar',
+			'expenses.addExpense' => 'Agregar Gasto',
+			'expenses.selectImageSource' => 'Seleccionar Fuente de Imagen',
+			'expenses.camera' => 'Cámara',
+			'expenses.gallery' => 'Galería',
+			'expenses.detected' => 'Detectado',
+			'expenses.detectedAmount' => 'Monto detectado',
+			'expenses.detectedMerchant' => 'Comercio detectado',
+			'expenses.noInfoDetected' => 'No se pudo detectar información. Por favor ingrese manualmente.',
+			'expenses.scanError' => 'Error al escanear recibo',
+			'expenses.receiptScanned' => 'Recibo escaneado',
+			'expenses.amount' => 'Monto',
+			'expenses.enterAmount' => 'Por favor ingrese un monto',
+			'expenses.validNumber' => 'Por favor ingrese un número válido',
+			'expenses.description' => 'Descripción',
+			'expenses.categoryOptional' => 'Categoría (Opcional)',
+			'expenses.date' => 'Fecha',
+			'expenses.saveExpense' => 'Guardar Gasto',
+			'expenses.scanReceipt' => 'Escanear Recibo',
+			_ => null,
+		};
+	}
+}

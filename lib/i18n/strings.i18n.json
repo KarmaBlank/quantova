@@ -1,0 +1,106 @@
+{
+  "appName": "Gastos Mensuales",
+  "common": {
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "add": "Add",
+    "search": "Search",
+    "filter": "Filter",
+    "all": "All",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "noData": "No data available"
+  },
+  "dashboard": {
+    "title": "Finance",
+    "totalBalance": "Total Balance",
+    "income": "Income",
+    "expenses": "Expenses",
+    "recentTransactions": "Recent Transactions",
+    "seeAll": "See all",
+    "youAreOnTop": "You are on Top",
+    "ofYourFinances": "of your Finances",
+    "noTransactions": "No transactions yet"
+  },
+  "transactions": {
+    "income": "Income",
+    "expense": "Expense",
+    "amount": "Amount",
+    "description": "Description",
+    "category": "Category",
+    "date": "Date",
+    "receipt": "Receipt",
+    "addIncome": "Add Income",
+    "addExpense": "Add Expense",
+    "editTransaction": "Edit Transaction",
+    "deleteTransaction": "Delete Transaction",
+    "scanReceipt": "Scan Receipt",
+    "takePhoto": "Take Photo",
+    "chooseFromGallery": "Choose from Gallery",
+    "saveIncome": "Save Income"
+  },
+  "categories": {
+    "title": "Categories",
+    "addCategory": "Add Category",
+    "editCategory": "Edit Category",
+    "deleteCategory": "Delete Category",
+    "selectCategory": "Select Category",
+    "customCategories": "Custom Categories",
+    "defaultCategories": {
+      "home": "Home",
+      "subscriptions": "Subscriptions",
+      "groceries": "Groceries",
+      "fastFood": "Fast Food",
+      "restaurant": "Restaurant",
+      "entertainment": "Entertainment"
+    }
+  },
+  "reports": {
+    "title": "Reports",
+    "byCategory": "By Category",
+    "byDate": "By Date",
+    "exportPDF": "Export PDF",
+    "exportExcel": "Export Excel",
+    "totalSpent": "Total Spent",
+    "averagePerDay": "Average per Day",
+    "topCategories": "Top Categories"
+  },
+  "settings": {
+    "title": "Settings",
+    "language": "Language",
+    "theme": "Theme",
+    "currency": "Currency",
+    "notifications": "Notifications"
+  },
+  "filters": {
+    "filterTransactions": "Filter Transactions",
+    "byType": "By Type",
+    "byCategory": "By Category",
+    "byDateRange": "By Date Range",
+    "apply": "Apply",
+    "clear": "Clear"
+  },
+  "expenses": {
+    "addExpense": "Add Expense",
+    "selectImageSource": "Select Image Source",
+    "camera": "Camera",
+    "gallery": "Gallery",
+    "detected": "Detected",
+    "detectedAmount": "Detected amount",
+    "detectedMerchant": "Detected merchant",
+    "noInfoDetected": "Could not detect info. Please enter manually.",
+    "scanError": "Error scanning receipt",
+    "receiptScanned": "Receipt scanned",
+    "amount": "Amount",
+    "enterAmount": "Please enter an amount",
+    "validNumber": "Please enter a valid number",
+    "description": "Description",
+    "categoryOptional": "Category (Optional)",
+    "date": "Date",
+    "saveExpense": "Save Expense",
+    "scanReceipt": "Scan Receipt"
+  }
+}

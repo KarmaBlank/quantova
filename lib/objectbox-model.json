@@ -1,0 +1,111 @@
+{
+  "_note1": "KEEP THIS FILE! Check it into a version control system (VCS) like git.",
+  "_note2": "ObjectBox manages crucial IDs for your object model. See docs for details.",
+  "_note3": "If you have VCS merge conflicts, you must resolve them according to ObjectBox docs.",
+  "entities": [
+    {
+      "id": "1:6744896488281043812",
+      "lastPropertyId": "8:7390239013733025406",
+      "name": "ExpenseTransaction",
+      "properties": [
+        {
+          "id": "1:1132203336212714210",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:6296340779117077162",
+          "name": "type",
+          "type": 6
+        },
+        {
+          "id": "3:2655075188082972104",
+          "name": "amount",
+          "type": 8
+        },
+        {
+          "id": "4:5787788797776278881",
+          "name": "date",
+          "type": 10
+        },
+        {
+          "id": "5:2237691362017003896",
+          "name": "description",
+          "type": 9
+        },
+        {
+          "id": "6:6054042248144251359",
+          "name": "category",
+          "type": 9
+        },
+        {
+          "id": "7:2052274208194959966",
+          "name": "receiptPath",
+          "type": 9
+        },
+        {
+          "id": "8:7390239013733025406",
+          "name": "categoryId",
+          "type": 6
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "2:2219137024965685110",
+      "lastPropertyId": "7:2313466357996318390",
+      "name": "Category",
+      "properties": [
+        {
+          "id": "1:9018647482455870130",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:3758809340553183982",
+          "name": "name",
+          "type": 9
+        },
+        {
+          "id": "3:6512956532128854948",
+          "name": "iconName",
+          "type": 9
+        },
+        {
+          "id": "4:6333655749172092658",
+          "name": "colorValue",
+          "type": 6
+        },
+        {
+          "id": "5:3598723132321023550",
+          "name": "isDefault",
+          "type": 1
+        },
+        {
+          "id": "6:5500932810136101016",
+          "name": "isActive",
+          "type": 1
+        },
+        {
+          "id": "7:2313466357996318390",
+          "name": "createdAt",
+          "type": 10
+        }
+      ],
+      "relations": []
+    }
+  ],
+  "lastEntityId": "2:2219137024965685110",
+  "lastIndexId": "0:0",
+  "lastRelationId": "0:0",
+  "lastSequenceId": "0:0",
+  "modelVersion": 5,
+  "modelVersionParserMinimum": 5,
+  "retiredEntityUids": [],
+  "retiredIndexUids": [],
+  "retiredPropertyUids": [],
+  "retiredRelationUids": [],
+  "version": 1
+}

@@ -1,0 +1,106 @@
+{
+  "appName": "Gastos Mensuales",
+  "common": {
+    "cancel": "Cancelar",
+    "save": "Guardar",
+    "delete": "Eliminar",
+    "edit": "Editar",
+    "add": "Agregar",
+    "search": "Buscar",
+    "filter": "Filtrar",
+    "all": "Todos",
+    "loading": "Cargando...",
+    "error": "Error",
+    "success": "Éxito",
+    "noData": "No hay datos disponibles"
+  },
+  "dashboard": {
+    "title": "Finanzas",
+    "totalBalance": "Balance Total",
+    "income": "Ingresos",
+    "expenses": "Gastos",
+    "recentTransactions": "Transacciones Recientes",
+    "seeAll": "Ver todo",
+    "youAreOnTop": "Estás al Día",
+    "ofYourFinances": "con tus Finanzas",
+    "noTransactions": "No hay transacciones aún"
+  },
+  "transactions": {
+    "income": "Ingreso",
+    "expense": "Gasto",
+    "amount": "Monto",
+    "description": "Descripción",
+    "category": "Categoría",
+    "date": "Fecha",
+    "receipt": "Recibo",
+    "addIncome": "Agregar Ingreso",
+    "addExpense": "Agregar Gasto",
+    "editTransaction": "Editar Transacción",
+    "deleteTransaction": "Eliminar Transacción",
+    "scanReceipt": "Escanear Recibo",
+    "takePhoto": "Tomar Foto",
+    "chooseFromGallery": "Elegir de Galería",
+    "saveIncome": "Guardar Ingreso"
+  },
+  "categories": {
+    "title": "Categorías",
+    "addCategory": "Agregar Categoría",
+    "editCategory": "Editar Categoría",
+    "deleteCategory": "Eliminar Categoría",
+    "selectCategory": "Seleccionar Categoría",
+    "customCategories": "Categorías Personalizadas",
+    "defaultCategories": {
+      "home": "Casa",
+      "subscriptions": "Suscripciones",
+      "groceries": "Super",
+      "fastFood": "Comida Rápida",
+      "restaurant": "Restaurante",
+      "entertainment": "Entretenimiento"
+    }
+  },
+  "reports": {
+    "title": "Reportes",
+    "byCategory": "Por Categoría",
+    "byDate": "Por Fecha",
+    "exportPDF": "Exportar PDF",
+    "exportExcel": "Exportar Excel",
+    "totalSpent": "Total Gastado",
+    "averagePerDay": "Promedio por Día",
+    "topCategories": "Principales Categorías"
+  },
+  "settings": {
+    "title": "Configuración",
+    "language": "Idioma",
+    "theme": "Tema",
+    "currency": "Moneda",
+    "notifications": "Notificaciones"
+  },
+  "filters": {
+    "filterTransactions": "Filtrar Transacciones",
+    "byType": "Por Tipo",
+    "byCategory": "Por Categoría",
+    "byDateRange": "Por Rango de Fechas",
+    "apply": "Aplicar",
+    "clear": "Limpiar"
+  },
+  "expenses": {
+    "addExpense": "Agregar Gasto",
+    "selectImageSource": "Seleccionar Fuente de Imagen",
+    "camera": "Cámara",
+    "gallery": "Galería",
+    "detected": "Detectado",
+    "detectedAmount": "Monto detectado",
+    "detectedMerchant": "Comercio detectado",
+    "noInfoDetected": "No se pudo detectar información. Por favor ingrese manualmente.",
+    "scanError": "Error al escanear recibo",
+    "receiptScanned": "Recibo escaneado",
+    "amount": "Monto",
+    "enterAmount": "Por favor ingrese un monto",
+    "validNumber": "Por favor ingrese un número válido",
+    "description": "Descripción",
+    "categoryOptional": "Categoría (Opcional)",
+    "date": "Fecha",
+    "saveExpense": "Guardar Gasto",
+    "scanReceipt": "Escanear Recibo"
+  }
+}
