@@ -11,6 +11,7 @@
     "all": "Todos",
     "loading": "Cargando...",
     "error": "Error",
+    "errorLoadingData": "Error cargando datos",
     "success": "Éxito",
     "noData": "No hay datos disponibles",
     "none": "Ninguna",
@@ -21,21 +22,37 @@
     "monthlyTrend": "Tendencia Mensual",
     "expenseDistribution": "Distribución de Gastos"
   },
+  "filters": {
+    "currentMonth": "Mes Actual",
+    "lastMonth": "Mes Pasado",
+    "last3Months": "Últimos 3 Meses",
+    "last6Months": "Últimos 6 Meses",
+    "lastYear": "Último Año",
+    "allTime": "Todo el Tiempo",
+    "custom": "Personalizado",
+    "filterTransactions": "Filtrar Transacciones",
+    "byType": "Por Tipo",
+    "byCategory": "Por Categoría",
+    "byDateRange": "Por Rango de Fechas",
+    "apply": "Aplicar",
+    "clear": "Limpiar"
+  },
   "dashboard": {
     "title": "Finanzas",
-    "totalBalance": "Balance Total",
+    "totalBalance": "Balance total",
     "income": "Ingresos",
     "expenses": "Gastos",
-    "recentTransactions": "Transacciones Recientes",
+    "recentTransactions": "Transacciones recientes",
     "seeAll": "Ver todo",
-    "youAreOnTop": "Estás al Día",
-    "ofYourFinances": "con tus Finanzas",
+    "youAreOnTop": "Estás al día",
+    "ofYourFinances": "con tus finanzas",
     "noTransactions": "No hay transacciones aún",
-    "globalSavings": "Ahorro Global",
-    "monthlySavings": "Ahorro Mensual",
+    "globalSavings": "Ahorro global",
+    "monthlySavings": "Ahorro mensual",
     "addIncome": "Agregar",
     "addExpense": "Agregar",
     "dailyTrend": "Tendencia Diaria",
+    "seeMoreCharts": "Ver más gráficos",
     "chartsAndAnalytics": "Gráficos y Análisis",
     "reportSaved": "Reporte guardado en",
     "exportToPdf": "Exportar a PDF",
@@ -72,7 +89,8 @@
       "groceries": "Super",
       "fastFood": "Comida Rápida",
       "restaurant": "Restaurante",
-      "entertainment": "Entretenimiento"
+      "entertainment": "Entretenimiento",
+      "salary": "Sueldo"
     }
   },
   "reports": {
@@ -92,14 +110,7 @@
     "currency": "Moneda",
     "notifications": "Notificaciones"
   },
-  "filters": {
-    "filterTransactions": "Filtrar Transacciones",
-    "byType": "Por Tipo",
-    "byCategory": "Por Categoría",
-    "byDateRange": "Por Rango de Fechas",
-    "apply": "Aplicar",
-    "clear": "Limpiar"
-  },
+
   "expenses": {
     "addExpense": "Agregar Gasto",
     "selectImageSource": "Seleccionar Fuente de Imagen",

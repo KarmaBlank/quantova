@@ -8,6 +8,7 @@ class CategoryHelper {
     'fastFood',
     'restaurant',
     'entertainment',
+    'salary',
   ];
 
   /// Returns the localized name for a default category
@@ -26,6 +27,8 @@ class CategoryHelper {
         return t.categories.defaultCategories.restaurant;
       case 'entertainment':
         return t.categories.defaultCategories.entertainment;
+      case 'salary':
+        return t.categories.defaultCategories.salary;
       default:
         return categoryKey; // Return original if not found
     }
@@ -40,6 +43,7 @@ class CategoryHelper {
       'fastFood': t.categories.defaultCategories.fastFood,
       'restaurant': t.categories.defaultCategories.restaurant,
       'entertainment': t.categories.defaultCategories.entertainment,
+      'salary': t.categories.defaultCategories.salary,
     };
   }
 }

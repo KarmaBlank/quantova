@@ -35,9 +35,10 @@ class _ExpensesPageState extends State<ExpensesPage> {
 
   Future<void> _loadCategories() async {
     final dbService = context.read<DatabaseService>();
-    final categories = dbService.categoryBox.getAll();
+    final allCategories = dbService.categoryBox.getAll();
     setState(() {
-      _categories = categories;
+      // Exclude Salary category for expenses
+      _categories = allCategories.where((cat) => cat.name != 'Salary').toList();
       if (_categories.isNotEmpty) {
         _selectedCategoryId = _categories.first.id;
       }
@@ -332,13 +333,7 @@ class _ExpensesPageState extends State<ExpensesPage> {
         title: Text(t.expenses.addExpense),
         backgroundColor: Colors.transparent,
         elevation: 0,
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.camera_alt),
-            onPressed: _scanReceipt,
-            tooltip: t.expenses.scanReceipt,
-          ),
-        ],
+        actions: [],
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -346,6 +341,51 @@ class _ExpensesPageState extends State<ExpensesPage> {
           key: _formKey,
           child: ListView(
             children: [
+              GestureDetector(
+                onTap: _scanReceipt,
+                child: Container(
+                  padding: const EdgeInsets.all(24),
+                  decoration: BoxDecoration(
+                    color: isDark ? const Color(0xFF1E1E1E) : Colors.white,
+                    borderRadius: BorderRadius.circular(16),
+                    border: Border.all(
+                      color: isDark ? Colors.white24 : Colors.grey.shade300,
+                    ),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.05),
+                        blurRadius: 10,
+                        offset: const Offset(0, 4),
+                      ),
+                    ],
+                  ),
+                  child: Column(
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.all(16),
+                        decoration: BoxDecoration(
+                          color: Theme.of(context).primaryColor.withOpacity(0.1),
+                          shape: BoxShape.circle,
+                        ),
+                        child: Icon(
+                          Icons.camera_alt_rounded,
+                          size: 32,
+                          color: Theme.of(context).primaryColor,
+                        ),
+                      ),
+                      const SizedBox(height: 12),
+                      Text(
+                        t.expenses.scanReceipt,
+                        style: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              const SizedBox(height: 24),
               if (_receiptPath != null)
                 Padding(
                   padding: const EdgeInsets.only(bottom: 16.0),

@@ -26,3 +26,21 @@ class DeleteTransaction extends TransactionEvent {
   @override
   List<Object> get props => [id];
 }
+
+class ChangeDateFilter extends TransactionEvent {
+  final DateTime date;
+
+  const ChangeDateFilter(this.date);
+
+  @override
+  List<Object> get props => [date];
+}
+
+class ChangeTypeFilter extends TransactionEvent {
+  final TransactionType? type;
+
+  const ChangeTypeFilter(this.type);
+
+  @override
+  List<Object> get props => [type ?? ''];
+}

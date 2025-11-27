@@ -13,6 +13,14 @@ class DefaultCategoriesService {
 
     // Default categories with icons and colors
     final defaultCategories = [
+      // Income category
+      Category(
+        name: 'Salary',
+        iconName: 'account_balance_wallet',
+        colorValue: const Color(0xFF4CAF50).value, // Green
+        isDefault: true,
+      ),
+      // Expense categories
       Category(
         name: 'Home',
         iconName: 'home',

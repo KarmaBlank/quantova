@@ -1,3 +1,5 @@
+import '../../i18n/strings.g.dart';
+
 enum DateFilterType {
   currentMonth,
   lastMonth,
@@ -12,19 +14,19 @@ extension DateFilterExtension on DateFilterType {
   String get label {
     switch (this) {
       case DateFilterType.currentMonth:
-        return 'Current Month';
+        return t.filters.currentMonth;
       case DateFilterType.lastMonth:
-        return 'Last Month';
+        return t.filters.lastMonth;
       case DateFilterType.last3Months:
-        return 'Last 3 Months';
+        return t.filters.last3Months;
       case DateFilterType.last6Months:
-        return 'Last 6 Months';
+        return t.filters.last6Months;
       case DateFilterType.lastYear:
-        return 'Last Year';
+        return t.filters.lastYear;
       case DateFilterType.allTime:
-        return 'All Time';
+        return t.filters.allTime;
       case DateFilterType.customMonth:
-        return 'Custom';
+        return t.filters.custom;
     }
   }
 

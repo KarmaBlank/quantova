@@ -17,13 +17,42 @@ class TransactionCard extends StatelessWidget {
     this.onDelete,
   });
 
+  Future<void> _handleDelete(BuildContext context) async {
+    final bool? result = await showDialog<bool>(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(t.transactions.deleteTransaction),
+          content: Text('${t.common.delete}?'),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(false),
+              child: Text(t.common.cancel),
+            ),
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(true),
+              style: TextButton.styleFrom(
+                foregroundColor: const Color(0xFFEF5350),
+              ),
+              child: Text(t.common.delete),
+            ),
+          ],
+        );
+      },
+    );
+
+    if (result == true && onDelete != null) {
+      onDelete!();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final isIncome = transaction.transactionType == TransactionType.income;
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Dismissible(
-      key: UniqueKey(),
+      key: ValueKey(transaction.id),
       direction: DismissDirection.endToStart,
       background: Container(
         alignment: Alignment.centerRight,
@@ -39,7 +68,7 @@ class TransactionCard extends StatelessWidget {
         ),
       ),
       confirmDismiss: (direction) async {
-        final bool? result = await showDialog(
+        final bool? result = await showDialog<bool>(
           context: context,
           builder: (BuildContext context) {
             return AlertDialog(
@@ -61,18 +90,20 @@ class TransactionCard extends StatelessWidget {
             );
           },
         );
-
-        if (result == true && onDelete != null) {
-          onDelete!();
-          return true;
-        }
-        return result;
+        return result ?? false;
       },
-      onDismissed: (direction) {},
+      onDismissed: (direction) {
+        // CRITICAL: Call onDelete synchronously here, not in confirmDismiss
+        // This ensures the item is removed from the state immediately
+        if (onDelete != null) {
+          onDelete!();
+        }
+      },
       child: Material(
         color: Colors.transparent,
         child: InkWell(
           onTap: onTap,
+          onLongPress: onDelete != null ? () => _handleDelete(context) : null,
           borderRadius: BorderRadius.circular(12),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),

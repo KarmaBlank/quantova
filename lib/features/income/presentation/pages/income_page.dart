@@ -32,9 +32,10 @@ class _IncomePageState extends State<IncomePage> {
 
   Future<void> _loadCategories() async {
     final dbService = context.read<DatabaseService>();
-    final categories = dbService.categoryBox.getAll();
+    final allCategories = dbService.categoryBox.getAll();
     setState(() {
-      _categories = categories;
+      // Only show Salary category for income
+      _categories = allCategories.where((cat) => cat.name == 'Salary').toList();
       if (_categories.isNotEmpty) {
         _selectedCategoryId = _categories.first.id;
       }

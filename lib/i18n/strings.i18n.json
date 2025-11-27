@@ -11,6 +11,7 @@
     "all": "All",
     "loading": "Loading...",
     "error": "Error",
+    "errorLoadingData": "Error loading data",
     "success": "Success",
     "noData": "No data available",
     "none": "None",
@@ -21,21 +22,37 @@
     "monthlyTrend": "Monthly Trend",
     "expenseDistribution": "Expense Distribution"
   },
+  "filters": {
+    "currentMonth": "Current Month",
+    "lastMonth": "Last Month",
+    "last3Months": "Last 3 Months",
+    "last6Months": "Last 6 Months",
+    "lastYear": "Last Year",
+    "allTime": "All Time",
+    "custom": "Custom",
+    "filterTransactions": "Filter Transactions",
+    "byType": "By Type",
+    "byCategory": "By Category",
+    "byDateRange": "By Date Range",
+    "apply": "Apply",
+    "clear": "Clear"
+  },
   "dashboard": {
     "title": "Finance",
-    "totalBalance": "Total Balance",
+    "totalBalance": "Balance total",
     "income": "Income",
     "expenses": "Expenses",
-    "recentTransactions": "Recent Transactions",
+    "recentTransactions": "Recent transactions",
     "seeAll": "See all",
-    "youAreOnTop": "You are on Top",
-    "ofYourFinances": "of your Finances",
+    "youAreOnTop": "You are on top",
+    "ofYourFinances": "of your finances",
     "noTransactions": "No transactions yet",
-    "globalSavings": "Global Savings",
-    "monthlySavings": "Monthly Savings",
+    "globalSavings": "Global savings",
+    "monthlySavings": "Monthly savings",
     "addIncome": "Add Income",
     "addExpense": "Add Expense",
     "dailyTrend": "Daily Trend",
+    "seeMoreCharts": "See more charts",
     "chartsAndAnalytics": "Charts & Analytics",
     "reportSaved": "Report saved to",
     "exportToPdf": "Export to PDF",
@@ -72,7 +89,8 @@
       "groceries": "Groceries",
       "fastFood": "Fast Food",
       "restaurant": "Restaurant",
-      "entertainment": "Entertainment"
+      "entertainment": "Entertainment",
+      "salary": "Salary"
     }
   },
   "reports": {
@@ -92,14 +110,7 @@
     "currency": "Currency",
     "notifications": "Notifications"
   },
-  "filters": {
-    "filterTransactions": "Filter Transactions",
-    "byType": "By Type",
-    "byCategory": "By Category",
-    "byDateRange": "By Date Range",
-    "apply": "Apply",
-    "clear": "Clear"
-  },
+
   "expenses": {
     "addExpense": "Add Expense",
     "selectImageSource": "Select Image Source",

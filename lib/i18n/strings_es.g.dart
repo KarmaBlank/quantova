@@ -39,12 +39,12 @@ class TranslationsEs with BaseTranslations<AppLocale, Translations> implements T
 	// Translations
 	@override String get appName => 'Gastos Mensuales';
 	@override late final _TranslationsCommonEs common = _TranslationsCommonEs._(_root);
+	@override late final _TranslationsFiltersEs filters = _TranslationsFiltersEs._(_root);
 	@override late final _TranslationsDashboardEs dashboard = _TranslationsDashboardEs._(_root);
 	@override late final _TranslationsTransactionsEs transactions = _TranslationsTransactionsEs._(_root);
 	@override late final _TranslationsCategoriesEs categories = _TranslationsCategoriesEs._(_root);
 	@override late final _TranslationsReportsEs reports = _TranslationsReportsEs._(_root);
 	@override late final _TranslationsSettingsEs settings = _TranslationsSettingsEs._(_root);
-	@override late final _TranslationsFiltersEs filters = _TranslationsFiltersEs._(_root);
 	@override late final _TranslationsExpensesEs expenses = _TranslationsExpensesEs._(_root);
 }
 
@@ -65,6 +65,7 @@ class _TranslationsCommonEs implements TranslationsCommonEn {
 	@override String get all => 'Todos';
 	@override String get loading => 'Cargando...';
 	@override String get error => 'Error';
+	@override String get errorLoadingData => 'Error cargando datos';
 	@override String get success => 'Éxito';
 	@override String get noData => 'No hay datos disponibles';
 	@override String get none => 'Ninguna';
@@ -76,6 +77,28 @@ class _TranslationsCommonEs implements TranslationsCommonEn {
 	@override String get expenseDistribution => 'Distribución de Gastos';
 }
 
+// Path: filters
+class _TranslationsFiltersEs implements TranslationsFiltersEn {
+	_TranslationsFiltersEs._(this._root);
+
+	final TranslationsEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get currentMonth => 'Mes Actual';
+	@override String get lastMonth => 'Mes Pasado';
+	@override String get last3Months => 'Últimos 3 Meses';
+	@override String get last6Months => 'Últimos 6 Meses';
+	@override String get lastYear => 'Último Año';
+	@override String get allTime => 'Todo el Tiempo';
+	@override String get custom => 'Personalizado';
+	@override String get filterTransactions => 'Filtrar Transacciones';
+	@override String get byType => 'Por Tipo';
+	@override String get byCategory => 'Por Categoría';
+	@override String get byDateRange => 'Por Rango de Fechas';
+	@override String get apply => 'Aplicar';
+	@override String get clear => 'Limpiar';
+}
+
 // Path: dashboard
 class _TranslationsDashboardEs implements TranslationsDashboardEn {
 	_TranslationsDashboardEs._(this._root);
@@ -84,19 +107,20 @@ class _TranslationsDashboardEs implements TranslationsDashboardEn {
 
 	// Translations
 	@override String get title => 'Finanzas';
-	@override String get totalBalance => 'Balance Total';
+	@override String get totalBalance => 'Balance total';
 	@override String get income => 'Ingresos';
 	@override String get expenses => 'Gastos';
-	@override String get recentTransactions => 'Transacciones Recientes';
+	@override String get recentTransactions => 'Transacciones recientes';
 	@override String get seeAll => 'Ver todo';
-	@override String get youAreOnTop => 'Estás al Día';
-	@override String get ofYourFinances => 'con tus Finanzas';
+	@override String get youAreOnTop => 'Estás al día';
+	@override String get ofYourFinances => 'con tus finanzas';
 	@override String get noTransactions => 'No hay transacciones aún';
-	@override String get globalSavings => 'Ahorro Global';
-	@override String get monthlySavings => 'Ahorro Mensual';
+	@override String get globalSavings => 'Ahorro global';
+	@override String get monthlySavings => 'Ahorro mensual';
 	@override String get addIncome => 'Agregar';
 	@override String get addExpense => 'Agregar';
 	@override String get dailyTrend => 'Tendencia Diaria';
+	@override String get seeMoreCharts => 'Ver más gráficos';
 	@override String get chartsAndAnalytics => 'Gráficos y Análisis';
 	@override String get reportSaved => 'Reporte guardado en';
 	@override String get exportToPdf => 'Exportar a PDF';
@@ -175,21 +199,6 @@ class _TranslationsSettingsEs implements TranslationsSettingsEn {
 	@override String get notifications => 'Notificaciones';
 }
 
-// Path: filters
-class _TranslationsFiltersEs implements TranslationsFiltersEn {
-	_TranslationsFiltersEs._(this._root);
-
-	final TranslationsEs _root; // ignore: unused_field
-
-	// Translations
-	@override String get filterTransactions => 'Filtrar Transacciones';
-	@override String get byType => 'Por Tipo';
-	@override String get byCategory => 'Por Categoría';
-	@override String get byDateRange => 'Por Rango de Fechas';
-	@override String get apply => 'Aplicar';
-	@override String get clear => 'Limpiar';
-}
-
 // Path: expenses
 class _TranslationsExpensesEs implements TranslationsExpensesEn {
 	_TranslationsExpensesEs._(this._root);
@@ -230,6 +239,7 @@ class _TranslationsCategoriesDefaultCategoriesEs implements TranslationsCategori
 	@override String get fastFood => 'Comida Rápida';
 	@override String get restaurant => 'Restaurante';
 	@override String get entertainment => 'Entretenimiento';
+	@override String get salary => 'Sueldo';
 }
 
 /// The flat map containing all translations for locale <es>.
@@ -251,6 +261,7 @@ extension on TranslationsEs {
 			'common.all' => 'Todos',
 			'common.loading' => 'Cargando...',
 			'common.error' => 'Error',
+			'common.errorLoadingData' => 'Error cargando datos',
 			'common.success' => 'Éxito',
 			'common.noData' => 'No hay datos disponibles',
 			'common.none' => 'Ninguna',
@@ -260,20 +271,34 @@ extension on TranslationsEs {
 			'common.expensesByCategory' => 'Gastos por Categoría',
 			'common.monthlyTrend' => 'Tendencia Mensual',
 			'common.expenseDistribution' => 'Distribución de Gastos',
+			'filters.currentMonth' => 'Mes Actual',
+			'filters.lastMonth' => 'Mes Pasado',
+			'filters.last3Months' => 'Últimos 3 Meses',
+			'filters.last6Months' => 'Últimos 6 Meses',
+			'filters.lastYear' => 'Último Año',
+			'filters.allTime' => 'Todo el Tiempo',
+			'filters.custom' => 'Personalizado',
+			'filters.filterTransactions' => 'Filtrar Transacciones',
+			'filters.byType' => 'Por Tipo',
+			'filters.byCategory' => 'Por Categoría',
+			'filters.byDateRange' => 'Por Rango de Fechas',
+			'filters.apply' => 'Aplicar',
+			'filters.clear' => 'Limpiar',
 			'dashboard.title' => 'Finanzas',
-			'dashboard.totalBalance' => 'Balance Total',
+			'dashboard.totalBalance' => 'Balance total',
 			'dashboard.income' => 'Ingresos',
 			'dashboard.expenses' => 'Gastos',
-			'dashboard.recentTransactions' => 'Transacciones Recientes',
+			'dashboard.recentTransactions' => 'Transacciones recientes',
 			'dashboard.seeAll' => 'Ver todo',
-			'dashboard.youAreOnTop' => 'Estás al Día',
-			'dashboard.ofYourFinances' => 'con tus Finanzas',
+			'dashboard.youAreOnTop' => 'Estás al día',
+			'dashboard.ofYourFinances' => 'con tus finanzas',
 			'dashboard.noTransactions' => 'No hay transacciones aún',
-			'dashboard.globalSavings' => 'Ahorro Global',
-			'dashboard.monthlySavings' => 'Ahorro Mensual',
+			'dashboard.globalSavings' => 'Ahorro global',
+			'dashboard.monthlySavings' => 'Ahorro mensual',
 			'dashboard.addIncome' => 'Agregar',
 			'dashboard.addExpense' => 'Agregar',
 			'dashboard.dailyTrend' => 'Tendencia Diaria',
+			'dashboard.seeMoreCharts' => 'Ver más gráficos',
 			'dashboard.chartsAndAnalytics' => 'Gráficos y Análisis',
 			'dashboard.reportSaved' => 'Reporte guardado en',
 			'dashboard.exportToPdf' => 'Exportar a PDF',
@@ -306,6 +331,7 @@ extension on TranslationsEs {
 			'categories.defaultCategories.fastFood' => 'Comida Rápida',
 			'categories.defaultCategories.restaurant' => 'Restaurante',
 			'categories.defaultCategories.entertainment' => 'Entretenimiento',
+			'categories.defaultCategories.salary' => 'Sueldo',
 			'reports.title' => 'Reportes',
 			'reports.byCategory' => 'Por Categoría',
 			'reports.byDate' => 'Por Fecha',
@@ -319,12 +345,6 @@ extension on TranslationsEs {
 			'settings.theme' => 'Tema',
 			'settings.currency' => 'Moneda',
 			'settings.notifications' => 'Notificaciones',
-			'filters.filterTransactions' => 'Filtrar Transacciones',
-			'filters.byType' => 'Por Tipo',
-			'filters.byCategory' => 'Por Categoría',
-			'filters.byDateRange' => 'Por Rango de Fechas',
-			'filters.apply' => 'Aplicar',
-			'filters.clear' => 'Limpiar',
 			'expenses.addExpense' => 'Agregar Gasto',
 			'expenses.selectImageSource' => 'Seleccionar Fuente de Imagen',
 			'expenses.camera' => 'Cámara',

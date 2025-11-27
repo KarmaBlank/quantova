@@ -45,12 +45,12 @@ class Translations with BaseTranslations<AppLocale, Translations> {
 	String get appName => 'Gastos Mensuales';
 
 	late final TranslationsCommonEn common = TranslationsCommonEn._(_root);
+	late final TranslationsFiltersEn filters = TranslationsFiltersEn._(_root);
 	late final TranslationsDashboardEn dashboard = TranslationsDashboardEn._(_root);
 	late final TranslationsTransactionsEn transactions = TranslationsTransactionsEn._(_root);
 	late final TranslationsCategoriesEn categories = TranslationsCategoriesEn._(_root);
 	late final TranslationsReportsEn reports = TranslationsReportsEn._(_root);
 	late final TranslationsSettingsEn settings = TranslationsSettingsEn._(_root);
-	late final TranslationsFiltersEn filters = TranslationsFiltersEn._(_root);
 	late final TranslationsExpensesEn expenses = TranslationsExpensesEn._(_root);
 }
 
@@ -92,6 +92,9 @@ class TranslationsCommonEn {
 	/// en: 'Error'
 	String get error => 'Error';
 
+	/// en: 'Error loading data'
+	String get errorLoadingData => 'Error loading data';
+
 	/// en: 'Success'
 	String get success => 'Success';
 
@@ -120,6 +123,54 @@ class TranslationsCommonEn {
 	String get expenseDistribution => 'Expense Distribution';
 }
 
+// Path: filters
+class TranslationsFiltersEn {
+	TranslationsFiltersEn._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+
+	/// en: 'Current Month'
+	String get currentMonth => 'Current Month';
+
+	/// en: 'Last Month'
+	String get lastMonth => 'Last Month';
+
+	/// en: 'Last 3 Months'
+	String get last3Months => 'Last 3 Months';
+
+	/// en: 'Last 6 Months'
+	String get last6Months => 'Last 6 Months';
+
+	/// en: 'Last Year'
+	String get lastYear => 'Last Year';
+
+	/// en: 'All Time'
+	String get allTime => 'All Time';
+
+	/// en: 'Custom'
+	String get custom => 'Custom';
+
+	/// en: 'Filter Transactions'
+	String get filterTransactions => 'Filter Transactions';
+
+	/// en: 'By Type'
+	String get byType => 'By Type';
+
+	/// en: 'By Category'
+	String get byCategory => 'By Category';
+
+	/// en: 'By Date Range'
+	String get byDateRange => 'By Date Range';
+
+	/// en: 'Apply'
+	String get apply => 'Apply';
+
+	/// en: 'Clear'
+	String get clear => 'Clear';
+}
+
 // Path: dashboard
 class TranslationsDashboardEn {
 	TranslationsDashboardEn._(this._root);
@@ -131,8 +182,8 @@ class TranslationsDashboardEn {
 	/// en: 'Finance'
 	String get title => 'Finance';
 
-	/// en: 'Total Balance'
-	String get totalBalance => 'Total Balance';
+	/// en: 'Balance total'
+	String get totalBalance => 'Balance total';
 
 	/// en: 'Income'
 	String get income => 'Income';
@@ -140,26 +191,26 @@ class TranslationsDashboardEn {
 	/// en: 'Expenses'
 	String get expenses => 'Expenses';
 
-	/// en: 'Recent Transactions'
-	String get recentTransactions => 'Recent Transactions';
+	/// en: 'Recent transactions'
+	String get recentTransactions => 'Recent transactions';
 
 	/// en: 'See all'
 	String get seeAll => 'See all';
 
-	/// en: 'You are on Top'
-	String get youAreOnTop => 'You are on Top';
+	/// en: 'You are on top'
+	String get youAreOnTop => 'You are on top';
 
-	/// en: 'of your Finances'
-	String get ofYourFinances => 'of your Finances';
+	/// en: 'of your finances'
+	String get ofYourFinances => 'of your finances';
 
 	/// en: 'No transactions yet'
 	String get noTransactions => 'No transactions yet';
 
-	/// en: 'Global Savings'
-	String get globalSavings => 'Global Savings';
+	/// en: 'Global savings'
+	String get globalSavings => 'Global savings';
 
-	/// en: 'Monthly Savings'
-	String get monthlySavings => 'Monthly Savings';
+	/// en: 'Monthly savings'
+	String get monthlySavings => 'Monthly savings';
 
 	/// en: 'Add Income'
 	String get addIncome => 'Add Income';
@@ -169,6 +220,9 @@ class TranslationsDashboardEn {
 
 	/// en: 'Daily Trend'
 	String get dailyTrend => 'Daily Trend';
+
+	/// en: 'See more charts'
+	String get seeMoreCharts => 'See more charts';
 
 	/// en: 'Charts & Analytics'
 	String get chartsAndAnalytics => 'Charts & Analytics';
@@ -326,33 +380,6 @@ class TranslationsSettingsEn {
 	String get notifications => 'Notifications';
 }
 
-// Path: filters
-class TranslationsFiltersEn {
-	TranslationsFiltersEn._(this._root);
-
-	final Translations _root; // ignore: unused_field
-
-	// Translations
-
-	/// en: 'Filter Transactions'
-	String get filterTransactions => 'Filter Transactions';
-
-	/// en: 'By Type'
-	String get byType => 'By Type';
-
-	/// en: 'By Category'
-	String get byCategory => 'By Category';
-
-	/// en: 'By Date Range'
-	String get byDateRange => 'By Date Range';
-
-	/// en: 'Apply'
-	String get apply => 'Apply';
-
-	/// en: 'Clear'
-	String get clear => 'Clear';
-}
-
 // Path: expenses
 class TranslationsExpensesEn {
 	TranslationsExpensesEn._(this._root);
@@ -441,6 +468,9 @@ class TranslationsCategoriesDefaultCategoriesEn {
 
 	/// en: 'Entertainment'
 	String get entertainment => 'Entertainment';
+
+	/// en: 'Salary'
+	String get salary => 'Salary';
 }
 
 /// The flat map containing all translations for locale <en>.
@@ -462,6 +492,7 @@ extension on Translations {
 			'common.all' => 'All',
 			'common.loading' => 'Loading...',
 			'common.error' => 'Error',
+			'common.errorLoadingData' => 'Error loading data',
 			'common.success' => 'Success',
 			'common.noData' => 'No data available',
 			'common.none' => 'None',
@@ -471,20 +502,34 @@ extension on Translations {
 			'common.expensesByCategory' => 'Expenses by Category',
 			'common.monthlyTrend' => 'Monthly Trend',
 			'common.expenseDistribution' => 'Expense Distribution',
+			'filters.currentMonth' => 'Current Month',
+			'filters.lastMonth' => 'Last Month',
+			'filters.last3Months' => 'Last 3 Months',
+			'filters.last6Months' => 'Last 6 Months',
+			'filters.lastYear' => 'Last Year',
+			'filters.allTime' => 'All Time',
+			'filters.custom' => 'Custom',
+			'filters.filterTransactions' => 'Filter Transactions',
+			'filters.byType' => 'By Type',
+			'filters.byCategory' => 'By Category',
+			'filters.byDateRange' => 'By Date Range',
+			'filters.apply' => 'Apply',
+			'filters.clear' => 'Clear',
 			'dashboard.title' => 'Finance',
-			'dashboard.totalBalance' => 'Total Balance',
+			'dashboard.totalBalance' => 'Balance total',
 			'dashboard.income' => 'Income',
 			'dashboard.expenses' => 'Expenses',
-			'dashboard.recentTransactions' => 'Recent Transactions',
+			'dashboard.recentTransactions' => 'Recent transactions',
 			'dashboard.seeAll' => 'See all',
-			'dashboard.youAreOnTop' => 'You are on Top',
-			'dashboard.ofYourFinances' => 'of your Finances',
+			'dashboard.youAreOnTop' => 'You are on top',
+			'dashboard.ofYourFinances' => 'of your finances',
 			'dashboard.noTransactions' => 'No transactions yet',
-			'dashboard.globalSavings' => 'Global Savings',
-			'dashboard.monthlySavings' => 'Monthly Savings',
+			'dashboard.globalSavings' => 'Global savings',
+			'dashboard.monthlySavings' => 'Monthly savings',
 			'dashboard.addIncome' => 'Add Income',
 			'dashboard.addExpense' => 'Add Expense',
 			'dashboard.dailyTrend' => 'Daily Trend',
+			'dashboard.seeMoreCharts' => 'See more charts',
 			'dashboard.chartsAndAnalytics' => 'Charts & Analytics',
 			'dashboard.reportSaved' => 'Report saved to',
 			'dashboard.exportToPdf' => 'Export to PDF',
@@ -517,6 +562,7 @@ extension on Translations {
 			'categories.defaultCategories.fastFood' => 'Fast Food',
 			'categories.defaultCategories.restaurant' => 'Restaurant',
 			'categories.defaultCategories.entertainment' => 'Entertainment',
+			'categories.defaultCategories.salary' => 'Salary',
 			'reports.title' => 'Reports',
 			'reports.byCategory' => 'By Category',
 			'reports.byDate' => 'By Date',
@@ -530,12 +576,6 @@ extension on Translations {
 			'settings.theme' => 'Theme',
 			'settings.currency' => 'Currency',
 			'settings.notifications' => 'Notifications',
-			'filters.filterTransactions' => 'Filter Transactions',
-			'filters.byType' => 'By Type',
-			'filters.byCategory' => 'By Category',
-			'filters.byDateRange' => 'By Date Range',
-			'filters.apply' => 'Apply',
-			'filters.clear' => 'Clear',
 			'expenses.addExpense' => 'Add Expense',
 			'expenses.selectImageSource' => 'Select Image Source',
 			'expenses.camera' => 'Camera',

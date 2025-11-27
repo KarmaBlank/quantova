@@ -8,6 +8,7 @@ import '../../../../core/utils/date_filter_helper.dart';
 import '../../../../core/utils/report_generator.dart';
 import '../../../../i18n/strings.g.dart';
 import '../../../dashboard/presentation/bloc/transaction_bloc.dart';
+import '../../../dashboard/presentation/widgets/atoms/filter_button.dart';
 
 class ChartsPage extends StatefulWidget {
   const ChartsPage({super.key});
@@ -30,50 +31,15 @@ class _ChartsPageState extends State<ChartsPage> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         actions: [
-          // Date Filter Dropdown
-          DropdownButtonHideUnderline(
-            child: DropdownButton<DateFilterType>(
-              value: _selectedFilter,
-              icon: const Icon(Icons.filter_list, size: 20),
-              borderRadius: BorderRadius.circular(12),
-              dropdownColor: isDark ? const Color(0xFF1E1E1E) : Colors.white,
-              style: TextStyle(
-                color: isDark ? Colors.white : Colors.black87,
-                fontSize: 14,
-                fontWeight: FontWeight.w500,
-              ),
-              onChanged: (DateFilterType? newValue) {
-                if (newValue != null) {
-                  setState(() {
-                    _selectedFilter = newValue;
-                  });
-                }
-              },
-              items: DateFilterType.values
-                  .where((type) => type != DateFilterType.customMonth) // Exclude custom for now
-                  .map<DropdownMenuItem<DateFilterType>>((DateFilterType value) {
-                return DropdownMenuItem<DateFilterType>(
-                  value: value,
-                  child: Text(value.label),
-                );
-              }).toList(),
-            ),
-          ),
           const SizedBox(width: 8),
           PopupMenuButton<String>(
             onSelected: (value) async {
               final state = context.read<TransactionBloc>().state;
               if (state is TransactionLoaded) {
-                String path = '';
                 if (value == 'pdf') {
-                  path = await ReportGenerator.generatePdf(state.transactions);
+                  await ReportGenerator.generatePdf(state.transactions);
                 } else if (value == 'excel') {
-                  path = await ReportGenerator.generateExcel(state.transactions);
-                }
-                if (context.mounted) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text('${t.dashboard.reportSaved} $path')),
-                  );
+                  await ReportGenerator.generateExcel(state.transactions);
                 }
               }
             },
@@ -86,48 +52,83 @@ class _ChartsPageState extends State<ChartsPage> {
           ),
         ],
       ),
-      body: BlocBuilder<TransactionBloc, TransactionState>(
-        builder: (context, state) {
-          if (state is TransactionLoading) {
-            return const Center(child: CircularProgressIndicator());
-          } else if (state is TransactionLoaded) {
-            // Filter transactions based on selected period
-            final filteredTransactions = state.transactions.where((t) {
-              return _selectedFilter.includes(t.date);
-            }).toList();
-
-            if (filteredTransactions.isEmpty) {
-              return Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(Icons.bar_chart, size: 64, color: Colors.grey[400]),
-                    const SizedBox(height: 16),
-                    Text(
-                      '${t.dashboard.noDataForPeriod}: ${_selectedFilter.label}',
-                      style: TextStyle(color: Colors.grey[600], fontSize: 16),
-                    ),
-                  ],
+      body: Column(
+        children: [
+          // Sticky Filter Buttons
+          Container(
+            padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+            decoration: BoxDecoration(
+              color: isDark ? const Color(0xFF121212) : const Color(0xFFFAFAFA),
+              border: Border(
+                bottom: BorderSide(
+                  color: isDark ? Colors.white10 : Colors.grey[200]!,
                 ),
-              );
-            }
-
-            return SingleChildScrollView(
-              padding: const EdgeInsets.all(16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  _buildExpensesByCategoryChart(filteredTransactions),
-                  const SizedBox(height: 24),
-                  _buildMonthlyTrendChart(filteredTransactions),
-                  const SizedBox(height: 24),
-                  _buildExpenseDistributionChart(filteredTransactions),
-                ],
               ),
-            );
-          }
-          return const Center(child: Text('Error loading data'));
-        },
+            ),
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: DateFilterType.values
+                    .where((type) => type != DateFilterType.customMonth)
+                    .map((type) => Padding(
+                          padding: const EdgeInsets.only(right: 8),
+                          child: FilterButton(
+                            label: type.label,
+                            isSelected: _selectedFilter == type,
+                            onTap: () => setState(() => _selectedFilter = type),
+                          ),
+                        ))
+                    .toList(),
+              ),
+            ),
+          ),
+          // Scrollable Content
+          Expanded(
+            child: BlocBuilder<TransactionBloc, TransactionState>(
+              builder: (context, state) {
+                if (state is TransactionLoading) {
+                  return const Center(child: CircularProgressIndicator());
+                } else if (state is TransactionLoaded) {
+                  // Filter transactions based on selected period
+                  final filteredTransactions = state.transactions.where((t) {
+                    return _selectedFilter.includes(t.date);
+                  }).toList();
+
+                  if (filteredTransactions.isEmpty) {
+                    return Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(Icons.bar_chart, size: 64, color: Colors.grey[400]),
+                          const SizedBox(height: 16),
+                          Text(
+                            '${t.dashboard.noDataForPeriod}: ${_selectedFilter.label}',
+                            style: TextStyle(color: Colors.grey[600], fontSize: 16),
+                          ),
+                        ],
+                      ),
+                    );
+                  }
+
+                  return SingleChildScrollView(
+                    padding: const EdgeInsets.all(16),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        _buildExpensesByCategoryChart(filteredTransactions),
+                        const SizedBox(height: 24),
+                        _buildMonthlyTrendChart(filteredTransactions),
+                        const SizedBox(height: 24),
+                        _buildExpenseDistributionChart(filteredTransactions),
+                      ],
+                    ),
+                  );
+                }
+                return Center(child: Text(t.common.errorLoadingData));
+              },
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -272,7 +273,7 @@ class _ChartsPageState extends State<ChartsPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Trend (${_selectedFilter.label})',
+              '${t.common.monthlyTrend} (${_selectedFilter.label})',
               style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 20),
@@ -379,12 +380,12 @@ class _ChartsPageState extends State<ChartsPage> {
           padding: const EdgeInsets.all(16),
           child: Column(
             children: [
-              const Text(
-                'Expense Distribution',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              Text(
+                t.common.expenseDistribution,
+                style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 40),
-              const Text('No expense data'),
+              Text(t.common.noExpenseData),
             ],
           ),
         ),

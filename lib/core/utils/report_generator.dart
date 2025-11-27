@@ -4,11 +4,12 @@ import 'package:excel/excel.dart';
 import 'package:intl/intl.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:pdf/widgets.dart' as pw;
+import 'package:share_plus/share_plus.dart';
 
 import '../database/entities/transaction.dart';
 
 class ReportGenerator {
-  static Future<String> generatePdf(List<ExpenseTransaction> transactions) async {
+  static Future<void> generatePdf(List<ExpenseTransaction> transactions) async {
     final pdf = pw.Document();
 
     pdf.addPage(
@@ -37,13 +38,19 @@ class ReportGenerator {
       ),
     );
 
-    final output = await getApplicationDocumentsDirectory();
-    final file = File("${output.path}/report_${DateTime.now().millisecondsSinceEpoch}.pdf");
+    final output = await getTemporaryDirectory();
+    final file = File("${output.path}/expense_report_${DateTime.now().millisecondsSinceEpoch}.pdf");
     await file.writeAsBytes(await pdf.save());
-    return file.path;
+
+    // Share the file
+    await Share.shareXFiles(
+      [XFile(file.path)],
+      subject: 'Expense Report',
+      text: 'Monthly expense report generated on ${DateFormat.yMMMd().format(DateTime.now())}',
+    );
   }
 
-  static Future<String> generateExcel(List<ExpenseTransaction> transactions) async {
+  static Future<void> generateExcel(List<ExpenseTransaction> transactions) async {
     var excel = Excel.createExcel();
     Sheet sheetObject = excel['Sheet1'];
 
@@ -65,12 +72,18 @@ class ReportGenerator {
       ]);
     }
 
-    final output = await getApplicationDocumentsDirectory();
-    final file = File("${output.path}/report_${DateTime.now().millisecondsSinceEpoch}.xlsx");
+    final output = await getTemporaryDirectory();
+    final file = File("${output.path}/expense_report_${DateTime.now().millisecondsSinceEpoch}.xlsx");
     final fileBytes = excel.save();
     if (fileBytes != null) {
       await file.writeAsBytes(fileBytes);
     }
-    return file.path;
+
+    // Share the file
+    await Share.shareXFiles(
+      [XFile(file.path)],
+      subject: 'Expense Report',
+      text: 'Monthly expense report generated on ${DateFormat.yMMMd().format(DateTime.now())}',
+    );
   }
 }
