@@ -3,4 +3,4 @@ prod:
   build_number: 1
 stg:
   version: 0.0.1
-  build_number: 6
+  build_number: 7
