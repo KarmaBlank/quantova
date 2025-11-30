@@ -1,0 +1,67 @@
+{
+  "project_info": {
+    "project_number": "945213917724",
+    "project_id": "quantova-ecd4f",
+    "storage_bucket": "quantova-ecd4f.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:945213917724:android:7cf7796b150650bc51edd9",
+        "android_client_info": {
+          "package_name": "com.example.gastos_mensuales_new"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD82-tOn0tnyakBC_cLvG6oz5VoAK8wHVc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:945213917724:android:88f07e2cdf30e3f651edd9",
+        "android_client_info": {
+          "package_name": "com.quantova.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD82-tOn0tnyakBC_cLvG6oz5VoAK8wHVc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:945213917724:android:e8598002b1f5995b51edd9",
+        "android_client_info": {
+          "package_name": "com.quantova.app.stg"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD82-tOn0tnyakBC_cLvG6oz5VoAK8wHVc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
