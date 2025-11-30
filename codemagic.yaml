@@ -13,7 +13,8 @@ workflows:
       events:
         - tag
       tag_patterns:
-        - "stg-v*"
+        - pattern: "stg-v*"
+          include: true
     scripts:
       - name: Get Flutter packages
         script: |
@@ -47,7 +48,8 @@ workflows:
       events:
         - tag
       tag_patterns:
-        - "prod-v*"
+        - pattern: "prod-v*"
+          include: true
     scripts:
       - name: Get Flutter packages
         script: |
