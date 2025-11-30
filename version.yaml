@@ -1,0 +1,6 @@
+prod:
+  version: 1.0.0
+  build_number: 1
+stg:
+  version: 0.0.1
+  build_number: 2

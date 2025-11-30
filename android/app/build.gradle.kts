@@ -1,14 +1,31 @@
 plugins {
     id("com.android.application")
+    // START: FlutterFire Configuration
+    id("com.google.gms.google-services")
+    // END: FlutterFire Configuration
     id("kotlin-android")
     // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
     id("dev.flutter.flutter-gradle-plugin")
 }
 
 android {
-    namespace = "com.example.gastos_mensuales_new"
+    namespace = "com.quantova.app"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
+
+    flavorDimensions += "env"
+    productFlavors {
+        create("stg") {
+            dimension = "env"
+            applicationIdSuffix = ".stg"
+            versionNameSuffix = "-stg"
+            resValue("string", "app_name", "Quantova (STG)")
+        }
+        create("prod") {
+            dimension = "env"
+            resValue("string", "app_name", "Quantova")
+        }
+    }
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
@@ -21,7 +38,7 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId = "com.example.gastos_mensuales_new"
+        applicationId = "com.quantova.app"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
         minSdk = flutter.minSdkVersion

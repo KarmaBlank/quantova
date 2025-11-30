@@ -1,0 +1,68 @@
+workflows:
+  android-stg:
+    name: Android Staging
+    max_build_duration: 60
+    instance_type: mac_mini_m1
+    environment:
+      flutter: stable
+      groups:
+        - firebase_credentials # You need to create this group in Codemagic with FIREBASE_TOKEN
+      vars:
+        FIREBASE_APP_ID: "1:945213917724:android:e8598002b1f5995b51edd9" # Staging App ID
+    triggering:
+      events:
+        - tag
+      tag_patterns:
+        - "stg-v*"
+    scripts:
+      - name: Get Flutter packages
+        script: |
+          flutter packages get
+      - name: Build Android Staging APK
+        script: |
+          BUILD_ARGS=$(dart scripts/version_manager.dart get-args stg)
+          echo "Building with args: $BUILD_ARGS"
+          flutter build apk --release --flavor stg $BUILD_ARGS
+    artifacts:
+      - build/**/outputs/**/*.apk
+    publishing:
+      firebase:
+        firebase_token: $FIREBASE_TOKEN
+        android:
+          app_id: $FIREBASE_APP_ID
+          groups:
+            - testers # Create this group in Firebase Console
+
+  android-prod:
+    name: Android Production
+    max_build_duration: 60
+    instance_type: mac_mini_m1
+    environment:
+      flutter: stable
+      groups:
+        - firebase_credentials
+      vars:
+        FIREBASE_APP_ID: "1:945213917724:android:88f07e2cdf30e3f651edd9" # Production App ID
+    triggering:
+      events:
+        - tag
+      tag_patterns:
+        - "prod-v*"
+    scripts:
+      - name: Get Flutter packages
+        script: |
+          flutter packages get
+      - name: Build Android Production APK
+        script: |
+          BUILD_ARGS=$(dart scripts/version_manager.dart get-args prod)
+          echo "Building with args: $BUILD_ARGS"
+          flutter build apk --release --flavor prod $BUILD_ARGS
+    artifacts:
+      - build/**/outputs/**/*.apk
+    publishing:
+      firebase:
+        firebase_token: $FIREBASE_TOKEN
+        android:
+          app_id: $FIREBASE_APP_ID
+          groups:
+            - testers

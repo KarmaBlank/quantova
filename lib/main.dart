@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -10,10 +11,14 @@ import 'core/theme/app_theme.dart';
 import 'features/dashboard/domain/repositories/transaction_repository.dart';
 import 'features/dashboard/presentation/bloc/transaction_bloc.dart';
 import 'features/dashboard/presentation/pages/dashboard_page.dart';
+import 'firebase_options.dart';
 import 'i18n/strings.g.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 
   // Initialize localization with device locale
   LocaleSettings.useDeviceLocale();

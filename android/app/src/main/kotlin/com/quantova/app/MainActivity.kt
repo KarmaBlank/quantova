@@ -1,4 +1,4 @@
-package com.example.gastos_mensuales_new
+package com.quantova.app
 
 import io.flutter.embedding.android.FlutterActivity
 
